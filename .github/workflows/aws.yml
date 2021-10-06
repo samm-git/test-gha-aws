@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@master
         with:
           role-to-assume: arn:aws:iam::512910658184:role/GHARole
           aws-region: us-east-1
