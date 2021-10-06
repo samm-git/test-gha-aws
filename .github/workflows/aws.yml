@@ -3,7 +3,7 @@
 name: CI
 
 permissions:
-  id-token: write
+#  id-token: write
 #  contents: write
 
 # Controls when the workflow will run
