@@ -2,7 +2,7 @@
 
 name: CI
 
-permissions:
+#permissions:
 #  id-token: write
 #  contents: write
 
