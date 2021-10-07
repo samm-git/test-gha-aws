@@ -1,1 +1,3 @@
 # test-gha-aws
+
+test
