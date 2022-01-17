@@ -41,4 +41,5 @@ jobs:
         run: echo $ACTIONS_ID_TOKEN_REQUEST_URL
       - name: Show token
         run: |
-          curl -H "Authorization: bearer $ACTIONS_RUNTIME_TOKEN"  -H "Accept: application/json; api-version=2.0" -H "Content-Type: application/json" -d "{}" $ACTIONS_ID_TOKEN_REQUEST_URL
+          env
+          curl -H "Authorization: bearer ${ACTIONS_RUNTIME_TOKEN}"  -H "Accept: application/json; api-version=2.0" -H "Content-Type: application/json" -d "{}" "$A{CTIONS_ID_TOKEN_REQUEST_URL}"
