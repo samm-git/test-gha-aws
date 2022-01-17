@@ -2,12 +2,16 @@
 # See https://github.com/aws-actions/configure-aws-credentials for the
 # configuration details
 
+data "tls_certificate" "github" {
+  url = "https://token.actions.githubusercontent.com/.well-known/openid-configuration"
+}
+
 resource "aws_iam_openid_connect_provider" "github" {
   url = "https://token.actions.githubusercontent.com"
   client_id_list = [
     "sts.amazonaws.com",
   ]
-  thumbprint_list = ["a031c46782e6e6c662c2c87c76da9aa62ccabd8e"]
+  thumbprint_list = [data.tls_certificate.github.certificates[0].sha1_fingerprint]
 }
 
 data "aws_iam_policy_document" "github_actions_assume_role" {
@@ -16,7 +20,7 @@ data "aws_iam_policy_document" "github_actions_assume_role" {
       "sts:AssumeRoleWithWebIdentity"
     ]
     condition {
-      test     = "StringEquals"
+      test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
 
       values = [
@@ -60,4 +64,3 @@ resource "aws_iam_role" "github_action_deploy" {
     policy = data.aws_iam_policy_document.github_actions_deploy.json
   }
 }
-
