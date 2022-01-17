@@ -28,15 +28,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@master
-        with:
-          role-to-assume: arn:aws:iam::325586418083:role/GHARole
-          aws-region: us-east-1
-      - name: Test AWS credentials
-        run: aws sts get-caller-identity
-
       # this part is only for the demo purposes
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
@@ -48,3 +39,12 @@ jobs:
             const coredemo = require('@actions/core')
             let id_token = await coredemo.getIDToken()
             coredemo.setOutput('id_token', id_token)
+
+      # Runs a single command using the runners shell
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: arn:aws:iam::325586418083:role/GHARole
+          aws-region: us-east-1
+      - name: Test AWS credentials
+        run: aws sts get-caller-identity
