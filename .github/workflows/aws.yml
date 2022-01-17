@@ -32,7 +32,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
-          role-to-assume: arn:aws:iam::512910658184:role/GHARole
+          role-to-assume: arn:aws:iam::325586418083:role/GHARole
           aws-region: us-east-1
       - name: Test
         run: aws sts get-caller-identity
