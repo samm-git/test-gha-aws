@@ -36,11 +36,11 @@ jobs:
           aws-region: us-east-1
       - name: Test AWS credentials
         run: aws sts get-caller-identity
-    - name: Get Id Token (for demo purposes)
-      uses: actions/github-script@v4
-      id: idtoken
-      with:
-        script: |
-          const coredemo = require('@actions/core')
-          let id_token = await coredemo.getIDToken()
-          coredemo.setOutput('id_token', id_token)
+      - name: Get Id Token (for demo purposes)
+        uses: actions/github-script@v4
+        id: idtoken
+        with:
+          script: |
+            const coredemo = require('@actions/core')
+            let id_token = await coredemo.getIDToken()
+            coredemo.setOutput('id_token', id_token)
