@@ -36,6 +36,10 @@ jobs:
           aws-region: us-east-1
       - name: Test AWS credentials
         run: aws sts get-caller-identity
+
+      # this part is only for the demo purposes
+      - name: Install OIDC Client from Core Package
+        run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Get Id Token (for demo purposes)
         uses: actions/github-script@v4
         id: idtoken
