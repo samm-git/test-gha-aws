@@ -42,4 +42,4 @@ jobs:
       - name: Show token
         run: |
           ID_TOKEN=$(curl --silent -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}"  -H "Accept: application/json; api-version=2.0" -H "Content-Type: application/json" -d "{}" "${ACTIONS_ID_TOKEN_REQUEST_URL}" | jq -r '.value')
-          echo "::set-output name=idToken::${ID_TOKEN}"
+          echo "::debug::ID_TOKEN"
