@@ -34,6 +34,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::325586418083:role/GHARole
           aws-region: us-east-1
-      - name: Test
+      - name: Test AWS credentials
         run: aws sts get-caller-identity
-
+      - name: find web token
+        run: ls -lR /
